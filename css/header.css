@@ -1,0 +1,14 @@
+body{
+  width:60%;
+  margin:0 auto;
+}
+
+#center_frame{
+  height: 20em;
+  border: 2px solid black;
+}
+
+#center_frame img{
+  width:100%;
+  height: 100%;
+}

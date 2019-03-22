@@ -1,0 +1,19 @@
+marquee{
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.col{
+  border: 2px solid black;
+  height: 100px;
+}
+
+input{
+  margin: 30px auto;
+}
+
+/* .row .col #msg {
+    color: red;
+    font-family: cursive;
+    text-align: center;
+} */
