@@ -38,7 +38,18 @@ session_start();
 
     $owner_name=$_POST['owner_name'];
     $owner_email=$_POST['owner_email'];
-    $owner_phoneno=(int)($_POST['owner_phoneno']);
+
+    function intfunc($pno)
+    {
+      $sum=0;
+      for ($i=0; $i < strlen($pno); $i++) {
+        $sum=($sum*10)+($pno[$i]-'0');
+      }
+      return $sum;
+    }
+
+    $owner_phoneno=intfunc($_POST['owner_phoneno']);
+
     if (!$row) {
 
       $sql="insert into vehicle(regno,company,model,color,type) values ('$regno','$company','$model','$color','$type')";
@@ -77,6 +88,8 @@ session_start();
     }
 
     $_SESSION['type']="four wheeler";
+    $_SESSION['owner_name']=$_POST['owner_name'];
+    $_SESSION['regno']=$_POST['regno'];
     header('Location:ticket.php');
     exit();
   }

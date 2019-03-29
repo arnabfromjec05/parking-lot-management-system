@@ -2,7 +2,6 @@
   session_start();
  ?>
 
-
 <?php
 $msg="No message till now.";
     if(isset($_POST['entry'])){
@@ -78,8 +77,19 @@ $msg="No message till now.";
     <title>Parking lot</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.php"><i class="fa fa-home"> Home</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    </nav>
+
+
     <?php require "header.php" ?>
     <marquee>Welcome to parking lot</marquee>
 

@@ -51,10 +51,31 @@
           $arrival_time=$row['arrival_time'];
           $exit_time=$now;
 
+
+          $sql="select type from vehicle where regno='$regno'";
+          $ret=mysql_query($sql,$conn);
+          if(!$ret){
+             die('Could not fetch type: ' . mysql_error());
+          }
+          $row=mysql_fetch_array($ret,MYSQL_ASSOC);
+          $type=$row['type'];
+
+          $sql="select name from owner where regno='$regno'";
+          $ret=mysql_query($sql,$conn);
+          if(!$ret){
+             die('Could not fetch type: ' . mysql_error());
+          }
+          $row=mysql_fetch_array($ret,MYSQL_ASSOC);
+          $name=$row['name'];
+
           session_start();
           $_SESSION['regno']=$regno;
           $_SESSION['arrival_time']=$arrival_time;
           $_SESSION['exit_time']=$exit_time;
+          $_SESSION['type']=$type;
+          $_SESSION['name']=$name;
+          $_SESSION['slot_no']=$slot_no;
+          $_SESSION['floor']=$floor;
 
           //optional to send owner details to the receipt side
           header('Location:receipt.php');
