@@ -1,5 +1,13 @@
 <?php
   session_start();
+
+  if(!isset($_SESSION['floor'])||!isset($_SESSION['slot_no']))
+	{
+		header('Location:index.php');
+		exit();
+	}
+
+
  ?>
 
 <!DOCTYPE html>
@@ -7,7 +15,7 @@
 	<head>
 		<title>Receipt</title>
 		<meta charset="utf-8">
-		<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/E4A12E83-BB45-584F-943B-B927858EAF3C/main.js" charset="UTF-8"></script><style type="text/css">
+		<style type="text/css">
 			body{
 				text-align: center;
 				border-style: solid;
@@ -60,7 +68,42 @@
 
 		</table>
 
-    <p id = "total_charge">PAID ₹40 at the gate.</p>
+		
+
+    <p id = "total_charge">
+    	<?php
+    		$charge_msg="";
+
+			function charges($arrival,$exit)
+			{
+				$arrival=explode(" ", $arrival);
+				$exit=explode(" ", $exit);
+
+				if($arrival[0]!=$exit[0])
+				{
+					$charge_msg="Penalty imposed 5000₹ as u have delayed parking";
+				}
+				else
+				{
+					$time1=explode(":", $arrival[1]);
+					$time2=explode(":", $exit[1]);
+
+					if((int)$time2[0]-(int)$time1[0]>4||((int)$time2[0]-(int)$time1[0]==4&&(int)$time2[1]>=(int)$time1[0]))
+						$charge_msg=80;
+					else if((int)$time2[0]-(int)$time1[0]>3||((int)$time2[0]-(int)$time1[0]==3&&(int)$time2[1]>=(int)$time1[0]))
+						$charge_msg=50;
+					else if((int)$time2[0]-(int)$time1[0]>2||((int)$time2[0]-(int)$time1[0]==2&&(int)$time2[1]>=(int)$time1[0]))
+						$charge_msg=40;
+					else 
+						$charge_msg=30;
+					$charge_msg="PAID ".$charge_msg."₹ at the gate";
+				}
+				echo $charge_msg;
+			} 
+    		charges($_SESSION['arrival_time'],$_SESSION['exit_time']);
+    	?>
+    		
+    </p>
     
     <table border="2" align="center">
 			<h4>PARKING CHARGES</h4>
@@ -89,3 +132,13 @@
     <a href="index.php">Home</a>
 	</body>
 </html>
+
+<?php 
+	unset($_SESSION['slot_no']);
+	unset($_SESSION['floor']);
+	unset($_SESSION['name']);
+	unset($_SESSION['arrival_time']);
+	unset($_SESSION['exit_time']);
+	unset($_SESSION['regno']);
+	unset($_SESSION['type']);
+ ?>

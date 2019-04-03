@@ -8,15 +8,7 @@ session_start();
   // echo $_SESSION['floor'];
   if (isset($_POST["submit"])) {
 
-    $dbhost = 'localhost:3306';
-    $dbuser = 'root';
-    $dbpass = 'root';
-    $conn = mysql_connect($dbhost,$dbuser,$dbpass);
-
-    if(! $conn ) {
-      die('Could not connect: ' . mysql_error());
-    }
-    mysql_select_db('parking',$conn);
+    require 'mysql_connecti.php';
 
     $regno=$_POST['regno'];
     $sql="select * from vehicle where regno = '$regno'";

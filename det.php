@@ -9,15 +9,7 @@
     header('Location:login.php');
   }
 
-  $dbhost = 'localhost:3306';
-  $dbuser = 'root';
-  $dbpass = 'root';
-  $conn = mysql_connect($dbhost,$dbuser,$dbpass);
-
-  if(! $conn ) {
-    die('Could not connect: ' . mysql_error());
-  }
-  mysql_select_db('parking',$conn);
+  require 'mysql_connecti.php';
 
   $sql="select timing_in.regno,timing_in.slot_no,timing_in.floor,timing_in.arrival_time
         from timing_in
@@ -77,31 +69,10 @@
   </head>
   <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><?php echo $_SESSION['username']; ?></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="index.php"><button type="button" class="btn btn-primary" name="button">Home</button></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php"><button type="button" class="btn btn-danger" name="button">Logout</button></a>
-      </li>
-    </ul>
-
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+  <?php require "admin_navbar.php" ?>
 
     <div class="table">
-      <h3>2 Wheelers currently present</h2>
+      <h3>2 Wheelers currently present</h3>
       <table border="1">
         <tr>
           <th>RegistrationNumber</th>
@@ -124,7 +95,7 @@
       </table>
     </div>
     <div class="table">
-      <h3>4 Wheelers currently present</h2>
+      <h3>4 Wheelers currently present</h3>
       <table border="1">
         <tr>
           <th>RegistrationNumber</th>

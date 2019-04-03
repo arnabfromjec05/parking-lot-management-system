@@ -6,16 +6,8 @@
 $msg="No message till now.";
     if(isset($_POST['entry'])){
       //echo "Entry command is working";
-       $dbhost = 'localhost:3306';
-       $dbuser = 'root';
-       $dbpass = 'root';
-       $conn = mysql_connect($dbhost, $dbuser, $dbpass);
-
-       if(! $conn ) {
-          die('Could not connect: ' . mysql_error());
-       }
-       mysql_select_db('parking',$conn);
-
+       require 'mysql_connecti.php';
+       
        $type=NULL;
        if($_POST['type']=="two_wheeler")
        {

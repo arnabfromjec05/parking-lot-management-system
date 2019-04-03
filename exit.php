@@ -6,16 +6,8 @@
         $msg='invalid slot id';
     }
     else {
-      $dbhost = 'localhost:3306';
-      $dbuser = 'root';
-      $dbpass = 'root';
-      $conn = mysql_connect($dbhost, $dbuser, $dbpass);
-
-      if(! $conn ) {
-         die('Could not connect: ' . mysql_error());
-      }
-      mysql_select_db('parking',$conn);
-
+      require 'mysql_connecti.php';
+      
       $slot_no=$_POST['slot_no'];
       $floor=$_POST['floor'];
       $sql="select * from timing_in where slot_no='$slot_no' and floor='$floor' and exit_time is null";

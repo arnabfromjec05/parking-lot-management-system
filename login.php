@@ -25,16 +25,8 @@ if($chk==1)
 else {
 	if (isset($_POST['login'])) {
 
-		$dbhost = 'localhost:3306';
-		$dbuser = 'root';
-		$dbpass = 'root';
-		$conn = mysql_connect($dbhost,$dbuser,$dbpass);
-
-		if(! $conn ) {
-			die('Could not connect: ' . mysql_error());
-		}
-		mysql_select_db('parking',$conn);
-
+		require 'mysql_connecti.php';
+		
 		$sql="select * from login";
 		$ret=mysql_query($sql,$conn);
 		if(!$ret)

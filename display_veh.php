@@ -3,6 +3,11 @@
  ?>
 <?php
 
+if(!(isset($_SESSION['username'])))
+  {
+    header('Location:login.php');
+  }
+
 $regno=$_GET['regno'];
 
   $dbhost = 'localhost:3306';

@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['floor'])||!isset($_SESSION['slot_no']))
+{
+	header('Location:index.php');
+	exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -95,3 +102,12 @@ session_start();
 
 	</body>
 </html>
+
+<?php 
+	unset($_SESSION['slot_no']);
+	unset($_SESSION['floor']);
+	unset($_SESSION['owner_name']);
+	unset($_SESSION['arrival_time']);
+	unset($_SESSION['regno']);
+	unset($_SESSION['type']);
+ ?>
