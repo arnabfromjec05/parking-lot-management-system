@@ -35,7 +35,7 @@ else {
 		}
 		while($row=mysql_fetch_array($ret,MYSQL_ASSOC))
 		{
-			if($row['username']==$_POST['username'] && $row['password']==$_POST['password'])
+			if($row['username']==$_POST['username'] && $row['password']==md5($_POST['password']))
 			{
 				$_SESSION['username']=$row['username'];
 				header('Location: det.php');

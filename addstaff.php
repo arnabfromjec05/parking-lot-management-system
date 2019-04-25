@@ -32,7 +32,7 @@ session_start();
 	{
 		$num=explode("W", $last);
 		$num=(int)$num[1]+1;
-		$last[strlen($last)-1]=(string)$num;
+		$last="W".$num;
 		return $last;
 	}
 
