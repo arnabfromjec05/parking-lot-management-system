@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2019 at 08:04 AM
+-- Generation Time: Apr 25, 2019 at 07:59 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -36,10 +36,13 @@ CREATE TABLE `four_wheeler` (
 --
 
 INSERT INTO `four_wheeler` (`regno`, `class`) VALUES
+('AP 304 AG', 'Economy'),
 ('GJ46 28 32', 'SUV'),
+('JJ KK10192', 'SUV'),
 ('JK 102 AY', 'Standard'),
 ('KL 105 AZ', 'Economy'),
 ('MH 2051', 'Standard'),
+('PJ A10 2310', 'Standard'),
 ('TN 88 1034', 'Economy'),
 ('WB ABC 102', 'Standard');
 
@@ -51,7 +54,7 @@ INSERT INTO `four_wheeler` (`regno`, `class`) VALUES
 
 CREATE TABLE `login` (
   `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL
+  `password` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -59,8 +62,8 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`username`, `password`) VALUES
-('arnabfromjec05', '10101010'),
-('lav@gabri', 'gabri1998');
+('arnabfromjec05', '6add84506c86a658bc85038f91e35ce7'),
+('lav', '6be4df75fa38e63482b1545f5a57c0d7');
 
 -- --------------------------------------------------------
 
@@ -80,11 +83,13 @@ CREATE TABLE `owner` (
 --
 
 INSERT INTO `owner` (`regno`, `name`, `phone_no`, `email`) VALUES
+('AP 304 AG', 'amber', 7876658235, 'amb@gmail.com'),
 ('AP 31 AY 6429', 'Sumeet', 2147483647, 'sum@yahoo.in'),
 ('ASD 23', 'subh', 2147483647, 'asdaasd@gmail.com'),
 ('ASD892', 'akash', 2147483647, 'am@yahoo.com'),
 ('GJ46 28 32', 'Sameer ', 2147483647, 'sameer@hotmail.in'),
 ('HP AS21', 'jatin', 2147483647, 'jatin@gmail.com'),
+('JJ KK10192', 'Lav', 9021412125, 'jdasfij@gmaik.com'),
 ('JK 102 AY', 'Jackie', 7755566664, 'jack@gmail.com'),
 ('KL 1020', 'abhishek', 9966889966, 'abhi@gmail.com'),
 ('KL 105 AZ', 'aashish', 8846464464, 'as@gmail.com'),
@@ -92,6 +97,7 @@ INSERT INTO `owner` (`regno`, `name`, `phone_no`, `email`) VALUES
 ('MH 101', 'Lav Gabri', 8888888811, 'lav1988@gmail.com'),
 ('MH 2051', 'arnab', 2147483647, 'aj@gmail.com'),
 ('MP 44 2944', 'akhilesh', 9919919919, 'akh@yahoomail.com'),
+('PJ A10 2310', 'Nishant', 9597635715, 'nis@gmail.com'),
 ('TN 88 1034', 'Mukund', 8765432284, 'mukund@gmail.com'),
 ('WB ABC 102', 'akj', 2147483647, 'akj@gmail.com');
 
@@ -263,10 +269,10 @@ INSERT INTO `slot` (`slot_no`, `floor`, `slot_type`, `status`) VALUES
 ('S050', 'F01', 2, 0),
 ('S050', 'F02', 2, 0),
 ('S050', 'F03', 2, 0),
-('S051', 'F01', 4, 0),
-('S051', 'F02', 4, 0),
+('S051', 'F01', 4, 1),
+('S051', 'F02', 4, 1),
 ('S051', 'F03', 4, 1),
-('S052', 'F01', 4, 1),
+('S052', 'F01', 4, 0),
 ('S052', 'F02', 4, 1),
 ('S052', 'F03', 4, 0),
 ('S053', 'F01', 4, 0),
@@ -439,10 +445,7 @@ INSERT INTO `staff` (`staff_id`, `name`, `phone_no`, `address`, `role`, `floor`)
 ('W3', 'Kunal', 7855638101, 'Maheshwari Hostel', 'Manager', 3),
 ('W4', 'Amit', 7899654321, 'Basudi colony,Bangalore', 'Cleaner', 1),
 ('W5', 'Kaju', 8884646551, 'Kaju colony,Bangalore', 'Cleaner', 2),
-('W6', 'Gujju', 7754632145, 'Gujral colony,Bangalore', 'Cleaner', 3),
-('W7', 'aashish jerua', 9456208200, 'southend circle,bangalore', 'Cleaner', 1),
-('W8', 'sekhar', 9946546321, 'Amrita station', 'Cleaner', 3),
-('W9', 'Sambit', 8865478954, 'abc road,mg galli,bangalore', 'Cleaner', 2);
+('W6', 'Gujju', 7754632145, 'Gujral colony,Bangalore', 'Cleaner', 3);
 
 -- --------------------------------------------------------
 
@@ -473,10 +476,13 @@ INSERT INTO `timing_in` (`slot_no`, `floor`, `regno`, `arrival_time`, `exit_time
 ('S051', 'F02', 'GJ46 28 32', '2019-03-26 17:57:24', '2019-03-31 16:30:16'),
 ('S051', 'F03', 'JK 102 AY', '2019-03-26 18:29:14', NULL),
 ('S002', 'F02', 'KL 1020', '2019-03-26 19:04:05', '2019-03-31 17:02:02'),
-('S052', 'F01', 'KL 105 AZ', '2019-03-27 04:59:11', NULL),
+('S052', 'F01', 'KL 105 AZ', '2019-03-27 04:59:11', '2019-04-05 00:36:33'),
 ('S001', 'F02', 'MH 101', '2019-03-29 07:40:25', NULL),
 ('S052', 'F02', 'TN 88 1034', '2019-03-31 15:21:31', NULL),
-('S001', 'F01', 'MP 44 2944', '2019-03-31 16:23:54', '2019-03-31 17:45:11');
+('S001', 'F01', 'MP 44 2944', '2019-03-31 16:23:54', '2019-03-31 17:45:11'),
+('S051', 'F01', 'AP 304 AG', '2019-04-04 13:32:28', NULL),
+('S051', 'F02', 'JJ KK10192', '2019-04-05 00:32:51', NULL),
+('S052', 'F01', 'PJ A10 2310', '2019-04-25 17:07:16', '2019-04-25 17:11:17');
 
 -- --------------------------------------------------------
 
@@ -523,11 +529,13 @@ CREATE TABLE `vehicle` (
 --
 
 INSERT INTO `vehicle` (`regno`, `company`, `model`, `color`, `type`) VALUES
+('AP 304 AG', 'Maruti', '800', 'white', 4),
 ('AP 31 AY 6429', 'Bajaj Pulsar', 'A01', 'Blue', 2),
 ('ASD 23', 'suzuki', 'delux101', 'red', 2),
 ('ASD892', 'hero', '800', 'red', 2),
 ('GJ46 28 32', 'Volkswagen', 'Vento', 'Black', 4),
 ('HP AS21', 'Bajaj', 'Discover', 'black', 2),
+('JJ KK10192', 'Honda', 'City', 'White', 4),
 ('JK 102 AY', 'Renault', 'EV', 'blue', 4),
 ('KL 1020', 'Royal Enfield', '200', 'Blue', 2),
 ('KL 105 AZ', 'Renault', 'Dustar 10', 'blue', 4),
@@ -535,6 +543,7 @@ INSERT INTO `vehicle` (`regno`, `company`, `model`, `color`, `type`) VALUES
 ('MH 101', 'Bajaj', 'Avenger', 'Red', 2),
 ('MH 2051', 'Mercedes', 'Benz 102', 'red', 4),
 ('MP 44 2944', 'Karizma ZMR', '101', 'white', 2),
+('PJ A10 2310', 'Mustang', 'GT 500', 'red', 4),
 ('TN 88 1034', 'Skoda', 'fabia', 'green', 4),
 ('WB ABC 102', 'Bugati Veyron', '102', 'black', 4);
 
